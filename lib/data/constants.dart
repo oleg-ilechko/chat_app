@@ -1,6 +1,8 @@
 import 'package:chat_app/pages/chat_row.dart';
 import 'package:chat_app/pages/user_row.dart';
 import 'package:chat_app/widget/avatar.dart';
+import 'package:chat_app/widget/chat_audio_message.dart';
+import 'package:chat_app/widget/chat_image.dart';
 import 'package:chat_app/widget/chat_message.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -255,16 +257,15 @@ final List<Widget> users = [
 ];
 
 final List<Widget> messages = [
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
-  ChatMessage(text: faker.lorem.sentence(), self: faker.randomGenerator.boolean()),
+  ChatMessage(text: faker.lorem.sentence() + emoji[random.integer(2)], self: faker.randomGenerator.boolean()),
+  ChatMessage(text: faker.lorem.sentence() + emoji[random.integer(2)], self: faker.randomGenerator.boolean()),
+  ChatMessage(text: faker.lorem.sentence() + emoji[random.integer(2)], self: faker.randomGenerator.boolean()),
+  ChatImage(Image.asset('assets/images/image1.png'), false),
+  ChatImage(Image.asset('assets/images/image2.png'), false),
+  ChatImage(Image.asset('assets/images/image3.png'), true),
+  ChatAudioMessage(),
+  ChatMessage(text: faker.lorem.sentence() + emoji[random.integer(2)], self: faker.randomGenerator.boolean()),
+  ChatImage(Image.asset('assets/images/image4.png'), true),
 ];
+
+final List<String> emoji = ['', ' 😀', ' 🤣😝🥺🤯🤑🤑🤑🤑'];

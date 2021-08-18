@@ -57,31 +57,76 @@ class _ChatMessageState extends State<ChatMessage> {
             ),
             Padding(
               padding: EdgeInsets.only(left: widget.self ? 0 : 40, right: 15),
-              child: Stack(
+              child: widget.self
+                  ? Stack(
+                    children: [
+                      Positioned(
+                        bottom: 0,
+                        child: SvgPicture.asset(
+                            "assets/chat/chat_self_bottom.svg"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 2),
+                        child: Container(
+                          width: 198,
+                          decoration: BoxDecoration(
+                              color: color,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(24),
+                                topRight: Radius.circular(24),
+                                bottomLeft: Radius.circular(24),
+                                bottomRight: Radius.circular(24),
+                              ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                            child: Text(
+                              widget.text,
+                              style: TextStyle(color: textColor),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                  : Stack(
                 children: [
+                  Positioned(
+                    bottom: 0,
+                    child: SvgPicture.asset(
+                        "assets/chat/chat_bottom.svg"),
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
+                    padding: const EdgeInsets.only(bottom: 2),
                     child: Container(
-                      constraints: BoxConstraints(minHeight: 38),
-                      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(200)),
+                      width: 198,
+                      decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(24),
+                          topRight: Radius.circular(24),
+                          bottomLeft: Radius.circular(24),
+                          bottomRight: Radius.circular(24),
+                        ),
+                      ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(widget.text, style: TextStyle(color: textColor),),
-                          ],
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                        child: Text(
+                          widget.text,
+                          style: TextStyle(color: textColor),
                         ),
                       ),
                     ),
                   ),
-                  Visibility(visible: !widget.self, child: Positioned(bottom: 2, left: 18, child: SvgPicture.asset("assets/chat/message_corner.svg"))),
-                  Visibility(visible: widget.self, child: Positioned(bottom: 2, right: 18, child: SvgPicture.asset("assets/chat/self_message_corner.svg")))
                 ],
               ),
             ),
-            Visibility(visible: widget.self, child: Positioned(bottom: 0, right: 0, child: SvgPicture.asset("assets/chat/read_indicator.svg")))
+            Visibility(
+                visible: widget.self,
+                child: Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: SvgPicture.asset("assets/chat/read_indicator.svg")))
           ],
         ),
       ),

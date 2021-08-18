@@ -49,6 +49,9 @@ class ChatBottomBar extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 15
                               ),
+                              onChanged: (value) {
+                                print(value);
+                              },
                               decoration: InputDecoration(
                                   contentPadding: const EdgeInsets.symmetric(vertical: 9),
                                   hintText: "Start Typing",
